@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>Tienda de productos </title>
         <link rel="stylesheet" href="../css/tienda.css"/>
     </head>
     <body class="pagproductos">
@@ -10,6 +10,16 @@
         <div id="contenedor">
             <div id="encabezado">
                 <h1>Listado de productos</h1>
+            </div>
+            <div id="cesta">
+            {if isset($cesta)}
+                {foreach $cesta as $cod=>$producto}
+                    {$producto['unidades']} 
+                    {$producto['producto']['nombre_corto']} 
+                    {$producto['producto']['PVP']} euros <br />
+                {/foreach}
+               
+            {/if}
             </div>
             <div id="productos">
 
@@ -19,7 +29,7 @@
                 <h2>{$texto}</h2>
                 {foreach $productos as $producto}
                     <form action="http://localhost/TiendaShop/logica/producto.php" method="POST">
-                        <input type="submit" value="Añadir" name='submit'>
+                        <input type="submit" value="Añadir" name='comprar'>
                         {$producto['nombre_corto']}
                         {$producto['PVP']} Euros <br />
                         <input type="hidden" name="cod" value='{$producto['cod']}'>
