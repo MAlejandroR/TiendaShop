@@ -16,7 +16,7 @@ class Cesta {
             $this->productos[$cod]['unidades'] ++;
         else
             $this->productos[$cod]['unidades'] = 1;
-        $this->productos[$cod]['producto'] = $bd->getProducto($cod);
+        $this->productos[$cod]['producto'] = $bd->obtener_producto($cod);
     }
 
     static public function obtener_cesta() {

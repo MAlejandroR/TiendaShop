@@ -49,7 +49,7 @@ $productos = $bd->obtener_productos();
 $plantilla->compartir("productos", $productos);
 
 //compartir la cesta
-$plantilla->compartir("cesta", $cesta->getProducto());
+$plantilla->compartir("cesta", $cesta->get_productos_cesta());
 
 
 
