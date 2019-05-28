@@ -12,29 +12,11 @@
                 <h1>Listado de productos</h1>
             </div>
             <div id="cesta">
-            {if isset($cesta)}
-                {foreach $cesta as $cod=>$producto}
-                    {$producto['unidades']} 
-                    {$producto['producto']['nombre_corto']} 
-                    {$producto['producto']['PVP']} euros <br />
-                {/foreach}
-               
-            {/if}
+             {include "cesta.tpl"}
             </div>
             <div id="productos">
+                {include "lista_productos.tpl"}
 
-                {if (isset($producto))}
-                    <h3>Has comprado {$producto['nombre_corto']}</h3>
-                {/if}
-                <h2>{$texto}</h2>
-                {foreach $productos as $producto}
-                    <form action="http://localhost/TiendaShop/logica/producto.php" method="POST">
-                        <input type="submit" value="Añadir" name='comprar'>
-                        {$producto['nombre_corto']}
-                        {$producto['PVP']} Euros <br />
-                        <input type="hidden" name="cod" value='{$producto['cod']}'>
-                    </form>
-                {/foreach}    
             </div><!-- Close div productos -->
         </div><!-- Close div contenedor -->
     </body>
