@@ -24,6 +24,10 @@ if (!isset($_SESSION['user'])) {
 $cesta = Cesta::obtener_cesta();
 
 
+if (isset($_POST['vaciar'])) {
+    $cesta->vaciar();
+}
+
 //Agrego en la cesta el nuevo producto
 if (isset($_POST['comprar'])) {
     $cod = $_POST['cod'];
@@ -48,8 +52,8 @@ $productos = $bd->obtener_productos();
 //compartir ese array con la plantilla
 $plantilla->compartir("productos", $productos);
 
-//compartir la cesta
-$plantilla->compartir("cesta", $cesta->get_productos_cesta());
+//compartir la cesta (el objeto)
+$plantilla->compartir("cesta", $cesta);
 
 
 

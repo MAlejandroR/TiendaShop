@@ -35,4 +35,29 @@ class Cesta {
         return $this->productos;
     }
 
+    /**
+     * este método devuelve el importe total de la cesta
+     */
+    public function importe_total() {
+        $total = 0;
+        foreach ($this->productos as $producto)
+            $total += $producto['unidades'] * $producto['producto']['PVP'];
+        return $total;
+    }
+
+    public function vaciar() {
+        $this->productos = [];
+    }
+
+    /**
+     * método que me indica si la cesta está o no vacía
+     * Es decir, si hay productos en la cesta
+     */
+    public function cesta_vacia() {
+        if (count($this->productos) > 0)
+            return false;
+        else
+            return true;
+    }
+
 }
